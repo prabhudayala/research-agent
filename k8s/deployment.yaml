@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: research-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: research-agent
+  template:
+    metadata:
+      labels:
+        app: research-agent
+    spec:
+      containers:
+      - name: research-agent
+        image: research-agent:latest  # Use local image if using minikube with local docker daemon
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-secret
+              key: api-key
+        volumeMounts:
+        - name: db-storage
+          mountPath: /data
+      volumes:
+      - name: db-storage
+        persistentVolumeClaim:
+          claimName: research-db-pvc

@@ -1,0 +1,9 @@
+openai
+python-dotenv
+duckduckgo-search
+fastapi
+uvicorn
+sqlmodel
+passlib[argon2]
+python-jose[cryptography]
+python-multipart

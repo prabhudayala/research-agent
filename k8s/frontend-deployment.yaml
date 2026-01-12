@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: research-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: research-ui
+  template:
+    metadata:
+      labels:
+        app: research-ui
+    spec:
+      containers:
+      - name: research-ui
+        image: research-ui:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
