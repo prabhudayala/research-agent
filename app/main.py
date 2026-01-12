@@ -21,7 +21,7 @@ app = FastAPI(title="Research Agent API", version="2.0.0", lifespan=lifespan)
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to Research Agent API - v3.1 (Jenkins Creds Fixed!)"}
+    return {"message": "Welcome to Research Agent API - v4.0 (Full GitOps Loop Verified!)"}
 
 # --- Pydantic Models for API ---
 class ResearchRequest(BaseModel):
