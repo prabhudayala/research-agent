@@ -19,6 +19,10 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Research Agent API", version="2.0.0", lifespan=lifespan)
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to Research Agent API - CI/CD Pipeline Verified!"}
+
 # --- Pydantic Models for API ---
 class ResearchRequest(BaseModel):
     topic: str
